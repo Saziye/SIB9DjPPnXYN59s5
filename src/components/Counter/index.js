@@ -1,18 +1,24 @@
-import React from 'react'
-import './styles.css'
+import React from "react";
 
-const Counter = ({ counter }) =>
-    <div key={counter.id} className="col-sm-6 col-md-3">
-        <div>{console.log("COUNTER", counter)}</div>
-        <div className={"product"} >
-            <div className="stats">
-                <div className="stats-container">
-                    <span className="product_name">{counter.name}</span>
-                    {/* <span className="product_name">{product.name}</span> */}
-                    {/* <p>{product.description}</p> */}
-                </div>
-            </div>
+const Counter = (props) => {
+  const value =
+    typeof parseInt(props.value) === "number" && !isNaN(parseInt(props.value))
+      ? Math.round(parseInt(props.value))
+      : props.value;
+  return (
+    <div className="card mr-0 custom-card">
+      <div className="card-body">
+        <h6 className="card-title mb-4 col-xs-offset-5">{props.header} </h6>
+
+        <h2 className="mb-1 text-primary col-xs-offset-5">{value}</h2>
+        
+        <div className="row col-xs-offset-5">
+            <div className="col-6 text-center help-block btn btn-success" >+</div>
+            <div className="col-6 text-center help-block btn btn-warning">-</div>
         </div>
-    </div>;
+      </div>
+    </div>
+  );
+};
 
-export default Counter
+export default Counter;

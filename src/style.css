@@ -19,7 +19,6 @@ body {
 .custom-card{
     border: 0 ;
     box-shadow: 0px 2px 4px #bdbdbd73;
-    width: 200px;
 }
 .card-body img {
     width: 25px;

@@ -14,8 +14,8 @@ class PriceList extends React.Component {
   render() {
     return (
       <div className="row mt-5 mt-xs-4">
-        <div className="col-12 mb-3">
-          <div className="card-deck custom-card-deck">
+       
+          <div className="card-deck custom-card-deck col-md-4">
             <Price
               header="United States Dollar(USD)"
               src={"/usd.png"}
@@ -23,6 +23,9 @@ class PriceList extends React.Component {
               label="(Price in USD)"
               value={this.state.USD}
             />
+          </div>
+
+          <div className="card-deck custom-card-deck col-md-4">
             <Price
               header="British Pound Sterling(GBP)"
               src={"/gbp.png"}
@@ -30,6 +33,8 @@ class PriceList extends React.Component {
               label="(Price in GBP)"
               value={this.state.GBP}
             />
+          </div>
+          <div className="card-deck custom-card-deck col-md-4">
             <Price
               header="Euro(EUR)"
               src={"/eur.png"}
@@ -38,7 +43,7 @@ class PriceList extends React.Component {
               value={this.state.EUR}
             />
           </div>
-        </div>
+
       </div>
     );
   }

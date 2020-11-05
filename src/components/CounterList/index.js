@@ -1,11 +1,44 @@
-import React from 'react'
-import { Counter } from '../'
+import React from "react";
+import Counter from "../Counter";
 
-const CounterList = ({ counters }) =>
-    <div className="row mt-3">
-        {counters.map(counter =>
-            <Counter key={counter.id} counter={counter} />
-        )}
-    </div>;
+class CounterList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hour: "10",
+      minute: "0",
+      second: "0",
+    };
+  }
 
-export default CounterList
+  render() {
+    return (
+      <div className="row mt-5 mt-xs-4 help-block">
+       
+          <div className="card-deck custom-card-deck col-md-4">
+            <Counter
+              header="Saat"
+              value={this.state.hour}
+            />
+          </div>
+
+          <div className="card-deck custom-card-deck col-md-4">
+            <Counter
+              header="Dakika"
+              value={this.state.minute}
+            />
+          </div>
+          <div className="card-deck custom-card-deck col-md-4">
+            <Counter
+              header="Saniye"
+              
+              value={this.state.second}
+            />
+          </div>
+
+      </div>
+    );
+  }
+}
+
+export default CounterList;
