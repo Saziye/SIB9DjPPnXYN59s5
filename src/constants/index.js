@@ -1,1 +1,1 @@
-export const API = "https://api.coindesk.com/v1/bpi/";
+export const API = "https://api.coindesk.com/v1/bpi";
