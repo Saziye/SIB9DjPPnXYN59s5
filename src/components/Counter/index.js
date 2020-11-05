@@ -11,8 +11,8 @@ const Counter = (props) => {
         <h2 className="mb-1 text-primary col-xs-offset-5">{value}</h2>
         
         <div className="row col-xs-offset-5">
-            <div className="col-6 text-center help-block btn btn-success" >+</div>
-            <div className="col-6 text-center help-block btn btn-warning">-</div>
+            <div className="col-6 text-center help-block btn btn-success" onClick={props.more}>+</div>
+            <div className="col-6 text-center help-block btn btn-warning" onClick={props.less}>-</div>
         </div>
       </div>
     </div>

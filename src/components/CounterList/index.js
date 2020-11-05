@@ -10,7 +10,6 @@ const h = new Date(
   d.getSeconds(),
   0
 );
-const countDownDate = h.getTime();
 class CounterList extends React.Component {
   constructor(props) {
     super(props);
@@ -18,10 +17,10 @@ class CounterList extends React.Component {
       hour: "10",
       minute: "0",
       second: "0",
+      countDownDate: h.getTime(),
     };
     this.setCounter();
   }
-
 
   setCounter = () => {
     const interval = setInterval(() => {
@@ -29,7 +28,7 @@ class CounterList extends React.Component {
       var now = new Date().getTime();
 
       // Find the distance between now and the count down date
-      var distance = countDownDate - now;
+      var distance = this.state.countDownDate - now;
 
       // Time calculations for days, hours, minutes and seconds
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -38,29 +37,80 @@ class CounterList extends React.Component {
       );
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      // document.getElementById("hoursVal").innerHTML = hours;
-      // document.getElementById("minVal").innerHTML = minutes;
-      // document.getElementById("secVal").innerHTML = seconds;
-      // Display the result in the element with id="demo"
       this.setState({ hour: hours, minute: minutes, second: seconds });
-
-      // If the count down is finished, write some text
     }, 1000);
+  };
+
+  setTime = (timeType, value) => {
+    var da = new Date(this.state.countDownDate);
+    let ha = new Date();
+    switch (timeType) {
+      case "h":
+        ha = new Date(
+          da.getFullYear(),
+          da.getMonth(),
+          da.getDate(),
+          da.getHours() + value,
+          da.getMinutes(),
+          da.getSeconds(),
+          0
+        );
+        break;
+      case "m":
+        ha = new Date(
+          da.getFullYear(),
+          da.getMonth(),
+          da.getDate(),
+          da.getHours(),
+          da.getMinutes() + value,
+          da.getSeconds(),
+          0
+        );
+        break;
+      case "s":
+        ha = new Date(
+          da.getFullYear(),
+          da.getMonth(),
+          da.getDate(),
+          da.getHours(),
+          da.getMinutes(),
+          da.getSeconds() + value,
+          0
+        );
+        break;
+      default:
+        break;
+    }
+    this.setState({ countDownDate: ha.getTime() });
   };
 
   render() {
     return (
       <div className="row mt-5 mt-xs-4 help-block">
         <div className="card-deck custom-card-deck col-md-4">
-          <Counter header="Saat" value={this.state.hour} />
+          <Counter
+            header="Hour"
+            more={() => this.setTime("h", 1)}
+            less={() => this.setTime("h", -1)}
+            value={this.state.hour}
+          />
         </div>
 
         <div className="card-deck custom-card-deck col-md-4">
-          <Counter header="Dakika" value={this.state.minute} />
+          <Counter
+            header="Minute"
+            more={() => this.setTime("m", 1)}
+            less={() => this.setTime("m", -1)}
+            value={this.state.minute}
+          />
         </div>
         <div className="card-deck custom-card-deck col-md-4">
-          <Counter header="Saniye" value={this.state.second} />
+          <Counter
+            header="Second"
+            more={() => this.setTime("s", 1)}
+            less={() => this.setTime("s", -1)}
+            value={this.state.second}
+          />
         </div>
       </div>
     );
