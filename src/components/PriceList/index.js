@@ -11,6 +11,12 @@ class PriceList extends React.Component {
     };
   }
 
+  setPrice = () => {
+    const interval = setInterval(() => {
+        //get data
+      }, 5000);
+  }
+
   render() {
     return (
       <div className="row mt-5 mt-xs-4">
