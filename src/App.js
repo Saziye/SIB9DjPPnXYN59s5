@@ -1,18 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import '../src/components/CounterList'
-import CounterList from '../src/components/CounterList';
+// import "./App.css";
+// import "../src/components/CounterList";
+import  'bootstrap/dist/css/bootstrap.min.css';
+// import CounterList from "../src/components/CounterList";
+import Header from "./components/Header";
+import PriceList from "./components/PriceList";
+import '../src/style.css'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <CounterList counters={[{ name: 'Saat', id: 0 }, { name: 'Dakika', id: 1 }, { name: 'Saniye', id: 2 }]} />
-      </header>
+      <Header branding="Bitcoin Dashboard" />
+      <div className="container">
+        <PriceList />
+      </div>
     </div>
   );
 }
