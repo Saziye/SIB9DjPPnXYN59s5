@@ -2,9 +2,7 @@ import React from "react";
 
 const Counter = (props) => {
   const value =
-    typeof parseInt(props.value) === "number" && !isNaN(parseInt(props.value))
-      ? Math.round(parseInt(props.value))
-      : props.value;
+     props.value;
   return (
     <div className="card mr-0 custom-card">
       <div className="card-body">
