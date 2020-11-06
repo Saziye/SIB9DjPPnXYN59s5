@@ -24,7 +24,6 @@ export const getCurrentPriceFromApi = () => {
             dispatch(
                 getPricesResult(true, "Current price bilgileri alındı.")
             );
-            console.log("RESPONSE IN ACTION*****", response.data.bpi);
             return dispatch(getPrices(response.data.bpi));
         } catch (err) {
             let errorMessage = "Current price bilgileri alınamadı, lütfen tekrar deneyin.";

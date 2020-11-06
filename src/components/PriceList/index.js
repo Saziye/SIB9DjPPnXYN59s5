@@ -6,47 +6,41 @@ import { getCurrentPriceFromApi } from "../../actions/index";
 class PriceList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      EUR: "-",
-      GBP: "-",
-      USD: "-",
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     this.setPrice();
-  };
+  }
 
   setPrice = () => {
     const interval = setInterval(() => {
       this.props.getCurrentPriceFromApi();
-      this.setState({ EUR: this.props.prices.EUR, GBP: this.props.prices.GBP, USD: this.props.prices.USD })
     }, 5000);
-  }
+  };
 
   render() {
     return (
       <div className="row mt-5 mt-xs-4">
-
         <div className="card-deck custom-card-deck col-md-4">
           <Price
             src={"/usd.png"}
             alt="fireSpot"
-            value={this.state.USD}
+            value={this.props.prices.USD}
           />
         </div>
         <div className="card-deck custom-card-deck col-md-4">
           <Price
             src={"/gbp.png"}
             alt="fireSpot"
-            value={this.state.GBP}
+            value={this.props.prices.GBP}
           />
         </div>
         <div className="card-deck custom-card-deck col-md-4">
           <Price
             src={"/eur.png"}
             alt="fireSpot"
-            value={this.state.EUR}
+            value={this.props.prices.EUR}
           />
         </div>
       </div>
